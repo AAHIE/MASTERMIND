@@ -25,7 +25,6 @@ public class MyGame {
 	private JTextField textFieldWhite;
 	private JTextField textFieldBlack;
 	private JButton btnRules;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -127,13 +126,13 @@ public class MyGame {
 					if(num3==secret[1] || num3==secret[2] || num3==secret[0]){
 						black++;
 					}
-					if(white<4 && black<4){
+					if(white<4 || white==4 && black<4 || black==4){ //SECOND COMMIT-ADDED =4 CONDITION FOR WHITE AND BLACK
 						textFieldWhite.setText(Integer.toString(white));
 						textFieldBlack.setText(Integer.toString(black));
 					}
 					
 					if(white==4){
-						JOptionPane.showMessageDialog(null, "Whoa! You win!!");
+						JOptionPane.showMessageDialog(null, "EUREKA! You've won!"); //SECOND COMMIT-CHANGED THE MESSAGE
 						
 					}
 					
@@ -141,11 +140,14 @@ public class MyGame {
 						JOptionPane.showMessageDialog(null, "You have " + white + " whites! Keep trying, you're almost there!");
 					}
 					
-					if(black==4 || black==3){
-						JOptionPane.showMessageDialog(null, "You have " + black + "blacks! Keep trying, you're almost there!");
+					if(black==3){
+						JOptionPane.showMessageDialog(null, "You have " + black + " blacks! Keep trying, you're almost there!");
 						
 					}
 					
+					if (black==4){
+						JOptionPane.showMessageDialog(null, "Whoa! The numbers are bang on! Just play with them!"); //SECOND COMMIT-CHANGED THE MESSAGE
+					}
 				}catch(Exception e1){
 					JOptionPane.showMessageDialog(null, "Please enter valid number between 0 to 9!");
 				}
@@ -209,9 +211,5 @@ public class MyGame {
 		});
 		btnRules.setBounds(116, 59, 192, 20);
 		frame.getContentPane().add(btnRules);
-		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(206, 90, 6, 20);
-		frame.getContentPane().add(passwordField);
 	}
 }
